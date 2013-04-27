@@ -22,6 +22,7 @@ public class CoreApps extends BasicDBObject{
     private double akutansi;
     private double geografi;
     private double sosiologi;
+    private String minat;
     private String hasilMinat;
     
     public CoreApps(){
@@ -57,6 +58,15 @@ public class CoreApps extends BasicDBObject{
     public void setKelas(String kelas) {
         this.kelas = kelas;
         put("kelas", this.kelas);
+    }
+
+    public String getMinat() {
+        return minat;
+    }
+
+    public void setMinat(String minat) {
+        this.minat = minat;
+        put("minat", this.minat);
     }
 
     public double getMatematika() {
