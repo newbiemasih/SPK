@@ -47,6 +47,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setNama(String nama) {
         this.nama = nama;
+        put("nama", this.nama);
     }
 
     public String getKelas() {
@@ -55,6 +56,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setKelas(String kelas) {
         this.kelas = kelas;
+        put("kelas", this.kelas);
     }
 
     public double getMatematika() {
@@ -63,6 +65,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setMatematika(double matematika) {
         this.matematika = matematika;
+        put("matematika", this.matematika);
     }
 
     public double getBiolgi() {
@@ -71,6 +74,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setBiolgi(double biolgi) {
         this.biolgi = biolgi;
+        put("biologi", this.biolgi);
     }
 
     public double getFisika() {
@@ -79,6 +83,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setFisika(double fisika) {
         this.fisika = fisika;
+        put("fisika", this.fisika);
     }
 
     public double getKimia() {
@@ -87,6 +92,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setKimia(double kimia) {
         this.kimia = kimia;
+        put("kimia", this.kimia);
     }
 
     public double getAkutansi() {
@@ -95,6 +101,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setAkutansi(double akutansi) {
         this.akutansi = akutansi;
+        put("akutansi", this.akutansi);
     }
 
     public double getGeografi() {
@@ -103,6 +110,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setGeografi(double geografi) {
         this.geografi = geografi;
+        put("geografi", this.geografi);
     }
 
     public double getSosiologi() {
@@ -111,6 +119,7 @@ public class CoreApps extends BasicDBObject{
 
     public void setSosiologi(double sosiologi) {
         this.sosiologi = sosiologi;
+        put("sosiologi", this.sosiologi);
     }
 
     public String getHasilMinat() {
