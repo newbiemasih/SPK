@@ -34,7 +34,7 @@ public class CoreApps extends BasicDBObject{
     }
 
     public String getNik() {
-        return nik;
+        return getString("nik");
     }
 
     public void setNik(String nik) {
@@ -43,7 +43,7 @@ public class CoreApps extends BasicDBObject{
     }
 
     public String getNama() {
-        return nama;
+        return getString("nama");
     }
 
     public void setNama(String nama) {
@@ -61,7 +61,7 @@ public class CoreApps extends BasicDBObject{
     }
 
     public String getMinat() {
-        return minat;
+        return getString("minat");
     }
 
     public void setMinat(String minat) {
@@ -133,7 +133,7 @@ public class CoreApps extends BasicDBObject{
     }
 
     public String getHasilMinat() {
-        return hasilMinat;
+        return getString("hasilMinat");
     }
 
     public void setHasilMinat(String hasilMinat) {
