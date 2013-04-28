@@ -670,7 +670,7 @@ public class MainGui extends javax.swing.JFrame {
             Document doc = new Document(PageSize.A4_LANDSCAPE.rotate());
             doc.addTitle("Data Hasil Peminatan Siswa/i");
             
-            PdfWriter.getInstance(doc, new FileOutputStream("C:"));
+            PdfWriter.getInstance(doc, new FileOutputStream("/home/newbie/Project/SPK/hasil.pdf"));
             doc.open();
             PdfPTable pdftable = new PdfPTable(12);
             pdftable.addCell("Nama");
