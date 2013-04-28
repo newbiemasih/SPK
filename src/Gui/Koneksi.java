@@ -22,8 +22,14 @@ public class Koneksi {
     static {
         try {
             mongo = new Mongo("localhost", 27017);
-        } catch (Exception e) {
+        } catch (UnknownHostException | MongoException ex) {
+            Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan Database", "Error Koneksi", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public static Mongo getMongo(){
+        return mongo;
     }
     
 }
