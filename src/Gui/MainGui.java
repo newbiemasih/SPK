@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -165,7 +166,7 @@ public class MainGui extends javax.swing.JFrame {
             isi++;
         }
         
-        String header[] = {};
+        String header[] = {"Nama", "No Induk", "Kelas Asal", "Sosiologi", "Akuntansi", "Geografi", "Kimia", "Fisika", "Biologi", "Matematika", "Minat Penjurusan", "Hasil Penjurusan"};
         TabelMurid.setModel(new DefaultTableModel(data, header));
         ScrollMurid.setViewportView(TabelMurid);
     }
@@ -510,6 +511,11 @@ public class MainGui extends javax.swing.JFrame {
 
         btnHapus.setText("Hapus");
         btnHapus.setToolTipText("");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnPerbaharui.setText("Perbaharui");
         btnPerbaharui.addActionListener(new java.awt.event.ActionListener() {
@@ -617,7 +623,7 @@ public class MainGui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -626,6 +632,17 @@ public class MainGui extends javax.swing.JFrame {
     
     private void sub_menu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub_menu2ActionPerformed
         // TODO add your handling code here:
+        int destroy = JOptionPane.showConfirmDialog(this, "Data yang dihapus tidak dapat kembali", "Konfirmasi",JOptionPane.YES_NO_OPTION ,JOptionPane.WARNING_MESSAGE);
+        if ( destroy == JOptionPane.YES_OPTION){
+            try {
+                peminatSrv.truncate();
+                kondisiAwal();
+            } catch (MongoException e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(this, "Terjadi kesalahan database.", "Error Database", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
     }//GEN-LAST:event_sub_menu2ActionPerformed
 
     private void btnUlangiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUlangiActionPerformed
@@ -658,6 +675,58 @@ public class MainGui extends javax.swing.JFrame {
             PdfPTable pdftable = new PdfPTable(12);
             pdftable.addCell("Nama");
             pdftable.addCell("No Induk");
+            pdftable.addCell("Kelas");
+            pdftable.addCell("Akutansi");
+            pdftable.addCell("Geografi");
+            pdftable.addCell("Sosiologi");
+            pdftable.addCell("Kimia");
+            pdftable.addCell("Fisika");
+            pdftable.addCell("Biologi");
+            pdftable.addCell("Matematika");
+            pdftable.addCell("Minat");
+            pdftable.addCell("Hasil Penjurusan");
+            for (int i = 0; i < count; i++){
+                Object ob1 = getObject(TabelMurid, i, 0);
+                Object ob2 = getObject(TabelMurid, i, 1);
+                Object ob3 = getObject(TabelMurid, i, 2);
+                Object ob4 = getObject(TabelMurid, i, 3);
+                Object ob5 = getObject(TabelMurid, i, 4);
+                Object ob6 = getObject(TabelMurid, i, 5);
+                Object ob7 = getObject(TabelMurid, i, 6);
+                Object ob8 = getObject(TabelMurid, i, 7);
+                Object ob9 = getObject(TabelMurid, i, 8);
+                Object ob10 = getObject(TabelMurid, i, 9);
+                Object ob11 = getObject(TabelMurid, i, 10);
+                Object ob12 = getObject(TabelMurid, i, 11);
+                
+                String a = ob1.toString();
+                String b = ob2.toString();
+                String c = ob3.toString();
+                String d = ob4.toString();
+                String e = ob5.toString();
+                String f = ob6.toString();
+                String g = ob7.toString();
+                String h = ob8.toString();
+                String ii = ob9.toString();
+                String j = ob10.toString();
+                String k = ob11.toString();
+                String l = ob12.toString();
+                
+                pdftable.addCell(a);
+                pdftable.addCell(b);
+                pdftable.addCell(c);
+                pdftable.addCell(d);
+                pdftable.addCell(e);
+                pdftable.addCell(f);
+                pdftable.addCell(g);
+                pdftable.addCell(h);
+                pdftable.addCell(ii);
+                pdftable.addCell(j);
+                pdftable.addCell(k);
+                pdftable.addCell(l);
+            }
+            doc.add(pdftable);
+            doc.close();
         } catch (FileNotFoundException | DocumentException | HeadlessException e) {
         }
     }//GEN-LAST:event_PDFActionPerformed
@@ -692,14 +761,23 @@ public class MainGui extends javax.swing.JFrame {
 
     private void txtFisikaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFisikaKeyTyped
         // TODO add your handling code here:
+        if (!Character.isDigit(evt.getKeyChar()) || txtFisika.getText().length() > LIMIT_NILAI) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtFisikaKeyTyped
 
     private void txtBiologiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBiologiKeyTyped
         // TODO add your handling code here:
+        if (!Character.isDigit(evt.getKeyChar()) || txtBiologi.getText().length() > LIMIT_NILAI) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtBiologiKeyTyped
 
     private void txtMatematikaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatematikaKeyTyped
         // TODO add your handling code here:
+        if (!Character.isDigit(evt.getKeyChar()) || txtMatematika.getText().length() > LIMIT_NILAI) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtMatematikaKeyTyped
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
@@ -811,6 +889,24 @@ public class MainGui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPerbaharuiActionPerformed
 
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        if (txtNama.getText().equals("") || txtNik.getText().equals("") || txtKelas.getText().equals("")
+                || txtAkutansi.getText().equals("") || txtGeografi.getText().equals("") || txtSosiologi.getText().equals("")
+                || txtKimia.getText().equals("") || txtFisika.getText().equals("") || txtBiologi.getText().equals("")
+                || txtMatematika.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Seleksi data yang akan dihapus.", "Error Submit", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String no_induk = txtNik.getText();
+            peminatSrv.hapus(no_induk);
+            kondisiAwal();
+            JOptionPane.showMessageDialog(this, "Data berhasil dihapus", "Error Deleted", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+    
+    public Object getObject  (JTable table, int idx_baris, int idx_kolom) {
+        return TabelMurid.getModel().getValueAt(idx_baris, idx_kolom);
+    }
     /**
      * @param args the command line arguments
      */
@@ -837,7 +933,18 @@ public class MainGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        MainGui tampil = new MainGui();
+        tampil.tabelDinamis();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
